@@ -1,7 +1,11 @@
-import "./App.css";
+//dependencies
+import { FC } from "react";
 
-function App() {
-  return <div className="App">App</div>;
-}
+//imports
+import Routes from "./routes";
+
+const App: FC = () => {
+  return <Routes />;
+};
 
 export default App;
