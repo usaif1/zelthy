@@ -1,10 +1,7 @@
-//dependencies
 import { FC } from "react";
 
-//imports
-
 const Home: FC = () => {
-  return <div> Home </div>;
+  return <div>I am the homepage component</div>;
 };
 
 export default Home;

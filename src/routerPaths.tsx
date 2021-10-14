@@ -1,10 +1,10 @@
 //imports
-import { Home } from "./pages";
+import { HomePage } from "pages";
 
 export const paths = [
   {
     id: "1",
     route: "/",
-    component: <Home />,
+    component: <HomePage />,
   },
 ];
