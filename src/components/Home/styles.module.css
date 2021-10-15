@@ -1,0 +1,44 @@
+/* USER CARD STYLES */
+.usersWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.userCard {
+  box-shadow: 3px 3px 4px #e8e8e8;
+  width: 28rem;
+  margin: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.userCard:hover {
+  scale: 2;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.userDetails {
+  margin-left: 1.5rem;
+}
+
+.imgContainer {
+  width: 100%;
+  height: 15rem;
+}
+
+.userName {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.detailsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.detail {
+  margin-left: 0.8rem;
+  font-size: 1.4rem;
+}
