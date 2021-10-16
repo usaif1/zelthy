@@ -159,7 +159,7 @@
   left: 50%;
 }
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 600px) {
   .userCard {
     width: 90%;
     margin: 1rem auto;
@@ -192,5 +192,14 @@
   }
   .loaderContainer {
     left: 47%;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .modal {
+    top: 2rem;
+  }
+  .loaderContainer {
+    left: 45%;
   }
 }
