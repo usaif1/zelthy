@@ -1,5 +1,5 @@
 //dependencies
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Mail, Phone, Globe, Trash, Heart, Edit3 } from "react-feather";
 
 //imports
@@ -14,10 +14,11 @@ interface Props {
     phone: string;
     website: string;
   };
+  setOpen: any;
 }
 
-const UserCard = (props: Props) => {
-  const { user } = props;
+const UserCard: FC<Props> = (props) => {
+  const { user, setOpen } = props;
   const [actions, setActions] = useState({
     like: false,
     edit: false,
@@ -53,9 +54,9 @@ const UserCard = (props: Props) => {
         strokeWidth={1.5}
         stroke="red"
       />
-      <span style={{ fontSize: "1.2rem", color: "#B0B0B0" }}>|</span>
-      <Edit3 size={"2rem"} strokeWidth={1.5} />
-      <span style={{ fontSize: "1.2rem", color: "#B0B0B0" }}>|</span>
+      <span className={style.verticalDivider}>|</span>
+      <Edit3 size={"2rem"} strokeWidth={1.5} onClick={() => setOpen(true)} />
+      <span className={style.verticalDivider}>|</span>
       <Trash
         size={"2rem"}
         fill={actions.delete ? "#268CFF" : "transparent"}
