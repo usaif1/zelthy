@@ -16,14 +16,14 @@ interface Props {
   };
   setOpen: any;
   setUser: any;
+  deleteUser: any;
 }
 
 const UserCard: FC<Props> = (props) => {
-  const { user, setOpen, setUser } = props;
+  const { user, setOpen, setUser, deleteUser } = props;
   const [actions, setActions] = useState({
     like: false,
     edit: false,
-    delete: false,
   });
 
   const imgLink = `https://avatars.dicebear.com/api/avataaars/${user.name.split(" ").join("")}.svg?mood[]=happy`;
@@ -32,6 +32,11 @@ const UserCard: FC<Props> = (props) => {
     setUser(user);
     setOpen(true);
     return;
+  };
+
+  const onDelete = (e) => {
+    e.stopPropagation();
+    deleteUser(user.id);
   };
 
   const userDetails = (
@@ -64,12 +69,7 @@ const UserCard: FC<Props> = (props) => {
       <span className={style.verticalDivider}>|</span>
       <Edit3 size={"2rem"} strokeWidth={1.5} onClick={onEdit} />
       <span className={style.verticalDivider}>|</span>
-      <Trash
-        size={"2rem"}
-        fill={actions.delete ? "#268CFF" : "transparent"}
-        onClick={() => setActions({ ...actions, delete: !actions.delete })}
-        strokeWidth={1.5}
-      />
+      <Trash size={"2rem"} stroke="#268CFF" onClick={onDelete} strokeWidth={1.5} />
     </div>
   );
 

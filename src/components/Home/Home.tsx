@@ -41,10 +41,15 @@ const Home: FC = () => {
     return (
       <div className={style.usersWrapper}>
         {users.map((user: User) => {
-          return <UserCard key={user.id} user={user} setOpen={setOpen} setUser={setUser} />;
+          return <UserCard key={user.id} user={user} setOpen={setOpen} setUser={setUser} deleteUser={deleteUser} />;
         })}
       </div>
     );
+  };
+
+  const deleteUser = (id: number) => {
+    const updatedUsers = users.filter((value: User) => value.id !== id);
+    setUsers(updatedUsers);
   };
 
   return (
