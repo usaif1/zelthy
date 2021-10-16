@@ -23,7 +23,7 @@ Modal.setAppElement("#root");
 const Home: FC = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [user, setUser] = useState({
     id: 0,
     name: "",
@@ -40,7 +40,7 @@ const Home: FC = () => {
     return (
       <div className={style.usersWrapper}>
         {users.map((user: User) => {
-          return <UserCard key={user.id} user={user} setOpen={setOpen} />;
+          return <UserCard key={user.id} user={user} setOpen={setOpen} setUser={setUser} />;
         })}
       </div>
     );
@@ -55,9 +55,10 @@ const Home: FC = () => {
           overlay: {
             background: `rgba(0, 0, 0, 0.65)`,
           },
-          // content: { inset: "10rem", width: "700px", height: "440px", margin: "auto", padding: "0", border: "none" },
         }}
         className={style.modal}
+        onRequestClose={() => setOpen(false)}
+        shouldCloseOnOverlayClick={true}
       >
         <EditForm user={user} setOpen={setOpen} />
       </Modal>

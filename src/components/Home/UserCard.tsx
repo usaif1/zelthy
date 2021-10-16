@@ -15,10 +15,11 @@ interface Props {
     website: string;
   };
   setOpen: any;
+  setUser: any;
 }
 
 const UserCard: FC<Props> = (props) => {
-  const { user, setOpen } = props;
+  const { user, setOpen, setUser } = props;
   const [actions, setActions] = useState({
     like: false,
     edit: false,
@@ -26,6 +27,12 @@ const UserCard: FC<Props> = (props) => {
   });
 
   const imgLink = `https://avatars.dicebear.com/api/avataaars/${user.name.split(" ").join("")}.svg?mood[]=happy`;
+
+  const onEdit = () => {
+    setUser(user);
+    setOpen(true);
+    return;
+  };
 
   const userDetails = (
     <div className={style.userDetails}>
@@ -55,7 +62,7 @@ const UserCard: FC<Props> = (props) => {
         stroke="red"
       />
       <span className={style.verticalDivider}>|</span>
-      <Edit3 size={"2rem"} strokeWidth={1.5} onClick={() => setOpen(true)} />
+      <Edit3 size={"2rem"} strokeWidth={1.5} onClick={onEdit} />
       <span className={style.verticalDivider}>|</span>
       <Trash
         size={"2rem"}

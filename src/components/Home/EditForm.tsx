@@ -16,30 +16,36 @@ interface Props {
   setOpen: any;
 }
 
-const inputInfo = [
-  {
-    id: "name",
-    type: "text",
-    label: "Name",
-  },
-  {
-    id: "email",
-    type: "text",
-    label: "Email",
-  },
-  {
-    id: "phone",
-    type: "text",
-    label: "Phone",
-  },
-  {
-    id: "website",
-    type: "text",
-    label: "Website",
-  },
-];
-
 const EditForm: FC<Props> = (props) => {
+  const { user, setOpen } = props;
+
+  const inputInfo = [
+    {
+      id: "name",
+      type: "text",
+      label: "Name",
+      value: user.name,
+    },
+    {
+      id: "email",
+      type: "text",
+      label: "Email",
+      value: user.email,
+    },
+    {
+      id: "phone",
+      type: "text",
+      label: "Phone",
+      value: user.phone,
+    },
+    {
+      id: "website",
+      type: "text",
+      label: "Website",
+      value: user.website,
+    },
+  ];
+
   const renderInputs = () => {
     return inputInfo.map((data) => {
       return (
@@ -48,7 +54,7 @@ const EditForm: FC<Props> = (props) => {
             <span className={style.asterisk}>*</span>
             {data.label}:
           </p>
-          <input type={data.type} name={data.id} className={style.input} />
+          <input readOnly={true} value={data.value} type={data.type} name={data.id} className={style.input} />
         </div>
       );
     });
@@ -58,14 +64,18 @@ const EditForm: FC<Props> = (props) => {
     <>
       <div className={style.formHeadingContainer}>
         <h1>Basic Modal</h1>
-        <X color="#B0B0B0" />
+        <X color="#B0B0B0" onClick={() => setOpen(false)} style={{ cursor: "pointer" }} />
       </div>
       <form>
         <div className={style.formWrapper}>{renderInputs()}</div>
-        <div className={`${style.formFooter}`}>
+        <div className={style.formFooter}>
           <div className={style.btnContainer}>
-            <button className={style.btnCancel}>Cancel</button>
-            <button className={style.btnOk}>OK</button>
+            <button className={style.btnCancel} onClick={() => setOpen(false)}>
+              Cancel
+            </button>
+            <button className={style.btnOk} onClick={() => setOpen(false)}>
+              OK
+            </button>
           </div>
         </div>
       </form>
