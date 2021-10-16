@@ -69,7 +69,6 @@ const UserCard: FC<Props> = (props) => {
         fill={actions.delete ? "#268CFF" : "transparent"}
         onClick={() => setActions({ ...actions, delete: !actions.delete })}
         strokeWidth={1.5}
-        stroke="#0073F5"
       />
     </div>
   );

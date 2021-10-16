@@ -8,6 +8,7 @@ import { fetchUsers } from "actions";
 //imports
 import UserCard from "./UserCard";
 import EditForm from "./EditForm";
+import BounceLoad from "components/Common/Loader/BounceLoad";
 import style from "./styles.module.css";
 
 interface User {
@@ -48,7 +49,13 @@ const Home: FC = () => {
 
   return (
     <>
-      {!loading ? renderUserCards() : null}
+      {!loading ? (
+        renderUserCards()
+      ) : (
+        <div className={style.loaderContainer}>
+          <BounceLoad loading={loading} size={35} color="#7E7E7E" />
+        </div>
+      )}
       <Modal
         isOpen={open}
         style={{
