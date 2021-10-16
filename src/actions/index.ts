@@ -13,6 +13,7 @@ interface Response {
   ];
 }
 
+//fetch users
 export const fetchUsers = async (setUsers: any, setLoading: any) => {
   try {
     const response: Response = await axios.get("https://jsonplaceholder.typicode.com/users");
@@ -21,4 +22,14 @@ export const fetchUsers = async (setUsers: any, setLoading: any) => {
   } catch (err) {
     console.log("Error fetching users", err);
   }
+};
+
+//disable scroll
+export const disableBodyScroll = () => {
+  document.body.style.overflow = "hidden";
+};
+
+//enable scroll
+export const enableBodyScroll = () => {
+  document.body.style.overflow = "unset";
 };

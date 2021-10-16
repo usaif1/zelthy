@@ -1,10 +1,12 @@
 //dependencies
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { X } from "react-feather";
 
 //imports
 import style from "./styles.module.css";
 
+//actions
+import { disableBodyScroll, enableBodyScroll } from "actions";
 interface Props {
   user: {
     id: number;
@@ -60,6 +62,16 @@ const EditForm: FC<Props> = (props) => {
     });
   };
 
+  useEffect(() => {
+    disableBodyScroll();
+    return enableBodyScroll;
+  }, []);
+
+  const closeModal = () => {
+    enableBodyScroll();
+    setOpen(false);
+  };
+
   return (
     <>
       <div className={style.formHeadingContainer}>
@@ -70,10 +82,10 @@ const EditForm: FC<Props> = (props) => {
         <div className={style.formWrapper}>{renderInputs()}</div>
         <div className={style.formFooter}>
           <div className={style.btnContainer}>
-            <button className={style.btnCancel} onClick={() => setOpen(false)}>
+            <button className={style.btnCancel} onClick={closeModal}>
               Cancel
             </button>
-            <button className={style.btnOk} onClick={() => setOpen(false)}>
+            <button className={style.btnOk} onClick={closeModal}>
               OK
             </button>
           </div>
